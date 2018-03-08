@@ -1,0 +1,9 @@
+body {
+  background-image: url("./images/background.jpg");
+  background-repeat: repeat;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+}
