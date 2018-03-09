@@ -37,5 +37,19 @@ body {
 
 .bottom {
   display: flex;
+  flex-direction: column;
+}
+
+.modules {
+  display: flex;
   flex-direction: row;
+}
+
+.modules-left,
+.modules-right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
+  justify-content: flex-end;
 }

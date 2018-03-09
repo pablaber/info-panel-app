@@ -16,8 +16,18 @@ class App extends Component {
           </div>
           <div className="filler"></div>
           <div className="bottom">
-            <NywContainer />
-            <MtaContainer />
+            <div className="modules">
+              <div className="modules-left">
+                <NywContainer />
+              </div>
+              <div className="modules-right">
+                <MtaContainer />
+              </div>
+            </div>
+            <div className="weather">
+              WEATHER INFO HERE
+            </div>
+
           </div>
         </div>
 
