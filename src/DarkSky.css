@@ -14,19 +14,24 @@
   align-items: center;
 }
 
+.filler {
+  flex-grow: 1;
+}
+
 .weather-icon {
   width: 150px;
   height: 150px;
 }
 
 .weather-icon-sm {
-  width: 150px;
-  height: 150px;
+  width: 60px;
+  height: 60px;
 }
 
 .arrow-icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
 }
 
 .current-temps-container {
@@ -69,4 +74,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.uv-index {
+  font-weight: bold;
 }

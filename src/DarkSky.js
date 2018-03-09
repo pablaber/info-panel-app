@@ -45,6 +45,7 @@ class DarkSky extends Component {
     }
     this.refreshData = this.refreshData.bind(this);
     this.currentRow = this.currentRow.bind(this);
+    this.uvIndexColor = this.uvIndexColor.bind(this);
   }
 
   render() {
@@ -103,6 +104,7 @@ class DarkSky extends Component {
               {this.state.data.currently.summary}
             </span>
           </div>
+          <div className="filler"></div>
           <div className="wind-speed current-icon">
             <img className="arrow-icon"
                  src={arrow}
@@ -115,7 +117,11 @@ class DarkSky extends Component {
           <div className="current-icon">
             <img className="weather-icon-sm"
                  src={shades}
-                 alt="sunglasses"/>
+                 alt="sunglasses" />
+            <span className="uv-index"
+                  style={{color: this.uvIndexColor(this.state.data.currently.uvIndex)}}>
+              {this.state.data.currently.uvIndex}
+            </span>
           </div>
         </div>
       )
@@ -141,6 +147,30 @@ class DarkSky extends Component {
       }
     });
   }
+
+  uvIndexColor(uvIndex) {
+    switch(uvIndex) {
+      case 0:
+      case 1:
+      case 2:
+        return "#2E9417";
+      case 3:
+      case 4:
+      case 5:
+        return "#F6E232";
+      case 6:
+      case 7:
+        return "#F55A1E";
+      case 8:
+      case 9:
+      case 10:
+        return "#D6091E";
+      default:
+        return "#6B4EC5";
+    }
+  }
 }
+
+
 
 export default DarkSky;
