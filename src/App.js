@@ -4,6 +4,7 @@ import './App.css';
 import NywContainer from './NywContainer';
 import MtaContainer from './MtaContainer';
 import DateTime from './DateTime';
+import DarkSky from './DarkSky';
 
 class App extends Component {
   render() {
@@ -25,7 +26,7 @@ class App extends Component {
               </div>
             </div>
             <div className="weather">
-              WEATHER INFO HERE
+              <DarkSky />
             </div>
 
           </div>

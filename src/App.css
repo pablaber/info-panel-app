@@ -38,6 +38,7 @@ body {
 .bottom {
   display: flex;
   flex-direction: column;
+  margin: 30px;
 }
 
 .modules {
@@ -52,4 +53,12 @@ body {
   flex-grow: 1;
   flex-basis: 0;
   justify-content: flex-end;
+}
+
+.modules-left {
+  margin-right: 10px;
+}
+
+.modules-right {
+  margin-left: 10px;
 }
