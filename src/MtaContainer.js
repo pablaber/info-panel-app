@@ -57,6 +57,7 @@ class MtaContainer extends Component {
 
   componentWillUnmount() {
     clearInterval(this.interval);
+    clearInterval(this.refreshInterval);
   };
 
   refreshData() {
