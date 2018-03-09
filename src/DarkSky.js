@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './DarkSky.css';
 
+import moment from 'moment';
+
 const REFRESH_RATE = 60000 * 10;
 
 const STATES = {
@@ -22,6 +24,10 @@ const wind = require('./images/weather-icons/wind.svg');
 
 const arrow = require('./images/arrow.png');
 const shades = require('./images/weather-icons/shades.svg');
+const umbrella = require('./images/weather-icons/umbrella.svg');
+const sunrise = require('./images/weather-icons/sunrise.svg');
+const sunset = require('./images/weather-icons/sunset.svg');
+
 
 const iconMap = {
   'clear-day': clearDay,
@@ -42,16 +48,23 @@ class DarkSky extends Component {
     this.state = {
       state: STATES.loading,
       data: {},
+      now: moment(),
     }
     this.refreshData = this.refreshData.bind(this);
     this.currentRow = this.currentRow.bind(this);
+    this.todayRow = this.todayRow.bind(this);
     this.uvIndexColor = this.uvIndexColor.bind(this);
+    this.sunriseSunset = this.sunriseSunset.bind(this);
+    this.rainChance = this.rainChance.bind(this);
+    this.uvIndex = this.uvIndex.bind(this);
+    this.windSpeed = this.windSpeed.bind(this);
   }
 
   render() {
     return (
       <div className="darksky-container">
         {this.currentRow()}
+        {this.todayRow()}
       </div>
     )
   }
@@ -105,24 +118,46 @@ class DarkSky extends Component {
             </span>
           </div>
           <div className="filler"></div>
-          <div className="wind-speed current-icon">
-            <img className="arrow-icon"
-                 src={arrow}
-                 style={{transform: "rotate(" + (this.state.data.currently.windBearing + 180) + "deg)"}}
-                 alt="wind-direction"/>
-            <span className="speed">
-              {Math.round(this.state.data.currently.windSpeed) + "mph"}
-            </span>
-          </div>
-          <div className="current-icon">
-            <img className="weather-icon-sm"
-                 src={shades}
-                 alt="sunglasses" />
-            <span className="uv-index"
-                  style={{color: this.uvIndexColor(this.state.data.currently.uvIndex)}}>
-              {this.state.data.currently.uvIndex}
-            </span>
-          </div>
+          {this.windSpeed()}
+          {this.uvIndex()}
+          {this.rainChance()}
+          {this.sunriseSunset()}
+        </div>
+      )
+    }
+  }
+
+  todayRow() {
+    if(this.state.state === STATES.loading) {
+      return (
+        <span>Loading</span>
+      )
+    }
+    else if(this.state.state === STATES.nodata) {
+      return (
+        <span>No Data</span>
+      )
+    }
+    else if(this.state.state === STATES.loaded) {
+      return (
+        <div className="darksky-row top-border hourly-schedule">
+          {this.state.data.hourly.data.slice(0,12).map((value, index) => {
+            return (
+
+              <div className="hourly-item" key={index}>
+                <span className="hourly-time">
+                  {moment(value.time * 1000).format("hA")}
+                </span>
+                <img className="weather-icon-hourly"
+                     src={iconMap[value.icon]}
+                     alt="weather icon" />
+
+                <span className="hourly-percip">
+                  {Math.round(value.precipProbability * 100) + "%"}
+                </span>
+              </div>
+            )
+          })}
         </div>
       )
     }
@@ -146,6 +181,76 @@ class DarkSky extends Component {
         })
       }
     });
+  }
+
+  windSpeed() {
+    return (
+      <div className="current-icon">
+        <img className="arrow-icon"
+             src={arrow}
+             style={{transform: "rotate(" + (this.state.data.currently.windBearing + 180) + "deg)"}}
+             alt="wind-direction"/>
+        <span className="speed">
+          {Math.round(this.state.data.currently.windSpeed) + " mph"}
+        </span>
+      </div>
+    )
+  }
+
+  uvIndex() {
+    return (
+      <div className="current-icon">
+        <img className="weather-icon-sm"
+             src={shades}
+             alt="sunglasses" />
+        <span className="uv-index"
+              style={{color: this.uvIndexColor(this.state.data.daily.data[0].uvIndex)}}>
+          {this.state.data.daily.data[0].uvIndex}
+        </span>
+      </div>
+    )
+  }
+
+  rainChance() {
+    return (
+      <div className="current-icon">
+        <img className="weather-icon-sm"
+             src={umbrella}
+             alt="umbrella" />
+        <span className="percip-chance">
+          {Math.round(this.state.data.daily.data[0].precipProbability*100) + "%"}
+        </span>
+      </div>
+    )
+  }
+
+  sunriseSunset() {
+    var sunriseTime = moment(this.state.data.daily.data[0].sunriseTime * 1000);
+    var sunsetTime = moment(this.state.data.daily.data[0].sunsetTime * 1000);
+    var nextSunriseTime = moment(this.state.data.daily.data[1].sunriseTime * 1000);
+    var icon, time;
+    if(this.state.now.isBefore(sunriseTime)) {
+      icon = sunrise;
+      time = sunriseTime;
+    }
+    else if(this.state.now.isBefore(sunsetTime)) {
+      icon = sunset;
+      time = sunsetTime;
+    }
+    else {
+      icon = sunrise;
+      time = nextSunriseTime;
+    }
+    return (
+      <div className="current-icon">
+        <img className="weather-icon-sm"
+             src={icon}
+             alt="sunrise or sunset icon" />
+        <span className="sunrise-sunset-time">
+          {time.format("h:mm a")}
+        </span>
+      </div>
+    )
   }
 
   uvIndexColor(uvIndex) {

@@ -70,7 +70,7 @@
 }
 
 .current-icon {
-  margin-left: 10px;
+  width: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,4 +78,24 @@
 
 .uv-index {
   font-weight: bold;
+}
+
+.top-border {
+  border-top: 2px solid black;
+}
+
+.hourly-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-icon-hourly {
+  margin: -20px;
+  padding-top: 10px;
+}
+
+.hourly-schedule {
+  justify-content: space-around;
+  padding-top: 10px;
 }
