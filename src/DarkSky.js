@@ -151,7 +151,9 @@ class DarkSky extends Component {
                 <img className="weather-icon-hourly"
                      src={iconMap[value.icon]}
                      alt="weather icon" />
-
+                <span className="hourly-temp">
+                  {Math.round(value.temperature)}&#176;
+                </span>
                 <span className="hourly-percip">
                   {Math.round(value.precipProbability * 100) + "%"}
                 </span>

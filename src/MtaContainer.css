@@ -1,5 +1,5 @@
 .mta-station-name {
-  font-size: 18px;
+  font-size: 26px;
   font-weight: bold;
   margin: 5px 0;
   border-bottom: 1px solid grey;
@@ -13,7 +13,7 @@
 }
 
 .subway-logo-container {
-  height: 20px;
+  height: 30px;
 }
 
 .subway-logo {
@@ -22,8 +22,13 @@
   height: 100%;
 }
 
+.subway-direction {
+  font-size: 20px;
+}
+
 .subway-time {
   margin-left: auto;
+  font-size: 20px;
 }
 
 .splitter {

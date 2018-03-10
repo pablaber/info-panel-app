@@ -5,6 +5,8 @@ import './MtaContainer.css';
 
 const logo = require('./images/mta_logo.png');
 const sixLogo = require('./images/6_logo.png');
+const fourLogo = require('./images/4_logo.png');
+const unknownLogo = require('./images/unknown_logo.png');
 
 
 const STATES = {
@@ -25,6 +27,7 @@ class MtaContainer extends Component {
     }
     this.updateTime = this.updateTime.bind(this);
     this.refreshData = this.refreshData.bind(this);
+    this.subwayLogoFor = this.subwayLogoFor.bind(this);
   }
 
   render() {
@@ -84,11 +87,14 @@ class MtaContainer extends Component {
     if(this.state.state === STATES.loaded) {
       var northbound = this.state.schedule["N"].map((val, index) => {
         var eta = moment(val.arrivalTime * 1000);
-        return eta;
+        return {
+          eta: eta,
+          routeId: val.routeId
+        }
       }).filter((val, index) => {
-        return val.isAfter(this.state.now);
+        return val.eta.isAfter(this.state.now);
       }).map((val, index) => {
-        var totalSeconds = val.diff(this.state.now, "seconds");
+        var totalSeconds = val.eta.diff(this.state.now, "seconds");
         var minutes = Math.floor(totalSeconds / 60);
         var seconds = totalSeconds % 60;
         seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -96,9 +102,9 @@ class MtaContainer extends Component {
         return (
           <div className="mta-row" key={"N" + index}>
             <div className="subway-logo-container">
-              <img className="subway-logo" src={sixLogo} alt="six train logo" />
+              <img className="subway-logo" src={this.subwayLogoFor(val.routeId)} alt="six train logo" />
             </div>
-            <label className="subway-direction">Northbound</label>
+            <label className="subway-direction">Uptown</label>
             <label className="subway-time">{timeStr}</label>
           </div>
         )
@@ -115,12 +121,13 @@ class MtaContainer extends Component {
           var seconds = totalSeconds % 60;
           seconds = seconds < 10 ? "0" + seconds : seconds;
           var timeStr = minutes + ":" + seconds;
+          console.log(val);
           return (
           <div className="mta-row" key={"S" + index}>
             <div className="subway-logo-container">
               <img className="subway-logo" src={sixLogo} alt="six train logo" />
             </div>
-            <label className="subway-direction">Southbound</label>
+            <label className="subway-direction">Downtown</label>
             <label className="subway-time">{timeStr}</label>
           </div>
         )
@@ -134,6 +141,18 @@ class MtaContainer extends Component {
     return (
       <h1>TEST</h1>
     )
+  }
+
+  subwayLogoFor(routeId) {
+    switch(routeId) {
+      case "4":
+        return fourLogo;
+      case "6":
+      case "6X":
+        return sixLogo;
+      default:
+        return unknownLogo;
+    }
   }
 
   updateTime() {

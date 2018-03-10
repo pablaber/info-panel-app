@@ -54,6 +54,7 @@
 .high-low {
   display: flex;
   flex-direction: column;
+  font-size: 22px;
 }
 
 .high {
@@ -93,6 +94,11 @@
 .weather-icon-hourly {
   margin: -20px;
   padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.hourly-temp {
+  font-weight: bold;
 }
 
 .hourly-schedule {
