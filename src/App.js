@@ -5,6 +5,7 @@ import NywContainer from './NywContainer';
 import MtaContainer from './MtaContainer';
 import DateTime from './DateTime';
 import DarkSky from './DarkSky';
+import Sports from './Sports';
 
 class App extends Component {
   render() {
@@ -19,10 +20,11 @@ class App extends Component {
           <div className="bottom">
             <div className="modules">
               <div className="modules-left">
-                <NywContainer />
+                <Sports />
               </div>
               <div className="modules-right">
                 <MtaContainer />
+                <NywContainer />
               </div>
             </div>
             <div className="weather">

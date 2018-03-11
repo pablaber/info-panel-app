@@ -8,7 +8,6 @@ const sixLogo = require('./images/6_logo.png');
 const fourLogo = require('./images/4_logo.png');
 const unknownLogo = require('./images/unknown_logo.png');
 
-
 const STATES = {
   loading: "loading",
   nodata: "nodata",
