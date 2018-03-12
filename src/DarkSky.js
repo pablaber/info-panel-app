@@ -90,7 +90,6 @@ class DarkSky extends Component {
       )
     }
     else if(this.state.state === STATES.loaded) {
-      console.log(this.state.data)
       return (
         <div className="darksky-row">
           <img className="weather-icon"

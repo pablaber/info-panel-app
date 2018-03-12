@@ -209,16 +209,15 @@ class Sports extends Component {
   loadYesterdaysScores() {
     if(this.state.state === STATES.loaded) {
       var yesterdaysScores = this.state.scores.yesterday;
-      console.log(yesterdaysScores);
       if(yesterdaysScores.length === 0) {
         return <span className="no-scores">No results from yesterday.</span>
       }
       else {
         return (
           <div className="yesterdays-scores">
-            {yesterdaysScores.map((value) => {
+            {yesterdaysScores.map((value, index) => {
               return (
-                <div className="score-box">
+                <div className="score-box" key={index}>
                   <div className="away-team">
                     <div className="score-logo-container">
                       <img className="score-logo"
@@ -263,13 +262,12 @@ class Sports extends Component {
   loadUpcomingSchedule() {
     if(this.state.state === STATES.loaded) {
       var upcomingSchedule = this.state.scores.future;
-      console.log(upcomingSchedule);
       return (
         <div className="future-games">
-          {upcomingSchedule.map((value) => {
+          {upcomingSchedule.map((value, index) => {
             var gameTime = moment(value.date, "YYYY-MM-DD h:mmA");
             return (
-              <div className="score-box">
+              <div className="score-box" key={index}>
                 <div className="away-team">
                   <div className="score-logo-container">
                     <img className="score-logo"

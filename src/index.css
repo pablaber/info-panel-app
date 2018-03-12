@@ -24,6 +24,10 @@ body {
   margin-top: 10px;
 }
 
+.module-container:first-child {
+  margin-top: 0px;
+}
+
 .title-container {
   align-items: center;
   display: flex;

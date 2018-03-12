@@ -120,7 +120,6 @@ class MtaContainer extends Component {
           var seconds = totalSeconds % 60;
           seconds = seconds < 10 ? "0" + seconds : seconds;
           var timeStr = minutes + ":" + seconds;
-          console.log(val);
           return (
           <div className="mta-row" key={"S" + index}>
             <div className="subway-logo-container">
@@ -137,9 +136,12 @@ class MtaContainer extends Component {
 
       return northbound.concat(splitter).concat(southbound);
     }
-    return (
-      <h1>TEST</h1>
-    )
+    else if(this.state.state === STATES.loading) {
+      return <span>Loading</span>
+    }
+    else {
+      return <span>Error getting MTA data</span>
+    }
   }
 
   subwayLogoFor(routeId) {

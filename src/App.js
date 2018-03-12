@@ -6,6 +6,7 @@ import MtaContainer from './MtaContainer';
 import DateTime from './DateTime';
 import DarkSky from './DarkSky';
 import Sports from './Sports';
+import News from './News';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
               <div className="modules-right">
                 <MtaContainer />
                 <NywContainer />
+                <News />
               </div>
             </div>
             <div className="weather">
