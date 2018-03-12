@@ -7,6 +7,7 @@ import DateTime from './DateTime';
 import DarkSky from './DarkSky';
 import Sports from './Sports';
 import News from './News';
+import Stocks from './Stocks';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <div className="bottom">
             <div className="modules">
               <div className="modules-left">
+                <Stocks />
                 <Sports />
               </div>
               <div className="modules-right">

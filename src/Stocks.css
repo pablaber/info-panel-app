@@ -1,0 +1,39 @@
+.stocks-container {
+  display: grid;
+  grid-template-columns: 75px auto 25% 25%;
+}
+
+.stock-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.symbol {
+  grid-column-start: 1;
+}
+
+.current-price,
+.amount-change,
+.percent-change {
+  justify-self: center;
+}
+
+.symbol,
+.current-price,
+.amount-change,
+.percent-change  {
+  font-size: 20px;
+  margin-bottom: 5px;  
+}
+
+.header {
+  grid-row-start: 1;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  width: 100%;
+  text-align: center;
+}
+
+.header:first-child {
+  text-align: left;
+}
