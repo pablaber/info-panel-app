@@ -72,7 +72,6 @@ class Stocks extends Component {
 
   loadStockInformation() {
     if(this.state.state === STATES.loaded) {
-      console.log(this.state.stocks)
       return (
         <div className="stocks-container">
           <div className="symbol header">Symbol</div>
@@ -82,30 +81,33 @@ class Stocks extends Component {
           {Object.keys(this.state.stocks).map((key, index) => {
             var value = this.state.stocks[key];
             var symbolStyle = {
-              "grid-row-start": (index + 2).toString()
+              gridRowStart: (index + 2).toString()
             }
             var amountChange = parseFloat(value.amountChange);
             var redOrGreen = amountChange > 0 ? "green" : amountChange === 0 ? "black" : "red";
             var redOrGreenStyle = {
               "color": redOrGreen
             }
-            console.log(typeof(symbolStyle))
             return (
               [
                 <span className="symbol"
-                     style={symbolStyle}>
+                     style={symbolStyle}
+                     key={key + "-symbol"}>
                      {key}
                 </span>,
-                <span className="current-price">
-                  {parseFloat(value.currentPrice)}
+                <span className="current-price"
+                      key={key + "-cp"}>
+                  {parseFloat(value.currentPrice).toFixed(2)}
                 </span>,
                 <span className="amount-change"
-                      style={redOrGreenStyle}>
-                      {amountChange}
+                      style={redOrGreenStyle}
+                      key={key + "-ac"}>
+                      {parseFloat(amountChange).toFixed(2)}
                 </span>,
                 <span className="percent-change"
-                      style={redOrGreenStyle}>
-                      {parseFloat(value.percentChange)*100}%
+                      style={redOrGreenStyle}
+                      key={key + "-pc"}>
+                      {(parseFloat(value.percentChange)*100).toFixed(2)}%
                 </span>
               ]
             )

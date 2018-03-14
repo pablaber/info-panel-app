@@ -7,6 +7,7 @@ const STATES = {
   loading: "loading",
   nodata: "nodata",
   loaded: "loaded",
+  offpeak: "offpeak",
 }
 const REFRESH_RATE = 60000;
 
@@ -52,7 +53,13 @@ class NywContainer extends Component {
     fetch("http://localhost:8080/nyw-bus-times").then((response) => {
       return response.json();
     }).then(data => {
-      if(data.length === 0) {
+      if(data.failed && data.error === "OFF_PEAK") {
+        this.setState((prevState, props) => {
+          prevState.state = STATES.offpeak;
+          return prevState;
+        });
+      }
+      else if(data.length === 0 || data.failed) {
         this.setState((prevState, props) => {
           prevState.state = STATES.nodata;
           return prevState;
@@ -78,6 +85,13 @@ class NywContainer extends Component {
       return (
         <div className="nyw-row">
           <span>No busses arriving soon.</span>
+        </div>
+      )
+    }
+    else if(this.state.state === STATES.offpeak) {
+      return (
+        <div className="nyr-row">
+          <span>Off peak, no busses arriving soon.</span>
         </div>
       )
     }

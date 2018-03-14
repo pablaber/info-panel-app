@@ -4,6 +4,8 @@ import moment from 'moment';
 
 import './Sports.css'
 
+const logo = require('./images/sports_logo.png')
+
 const logos = {
   mlb: {
     ana: require('./images/sports-logos/mlb/ana.png'),
@@ -162,6 +164,9 @@ class Sports extends Component {
     return (
       <div className="module-container">
         <div className="title-container">
+          <div className="logo-container">
+            <img className="logo" src={logo} alt="sports logo" />
+          </div>
           <div className="titles">
             <h1 className="title">Sports</h1>
             <h3 className="subtitle">Scores and Schedules</h3>
