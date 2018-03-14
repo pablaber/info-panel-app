@@ -1,0 +1,39 @@
+.article {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px 0;
+  border-bottom: 1px solid grey;
+}
+
+.article:last-child {
+  border-bottom: 0;
+  margin-bottom: 0
+
+}
+
+.thumbnail-container {
+  width: 75px;
+  height: 75px;
+  min-width:75px;
+  overflow: hidden;
+  align-items: center;
+  display: flex;
+  padding-right: 15px;
+}
+
+.thumbnail {
+  display: block;
+  max-width: 100%;
+  border: 2px solid grey;
+  border-radius: 2px;
+}
+
+.article-title {
+  font-weight: bold;
+}
+
+.article-info {
+  display: flex;
+  flex-direction: column;
+}

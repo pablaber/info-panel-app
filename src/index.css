@@ -3,3 +3,52 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.title {
+  margin: 0;
+  font-size: 36px
+}
+
+.subtitle {
+  margin: 0;
+  color: grey;
+}
+
+.module-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  flex-grow: 1;
+}
+
+.module-container:first-child {
+  margin-top: 0px;
+}
+
+.title-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid grey;
+  padding-bottom: 5px;
+}
+
+.logo-container {
+  height: 60px;
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}

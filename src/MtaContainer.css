@@ -1,0 +1,36 @@
+.mta-station-name {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 5px 0;
+  border-bottom: 1px solid grey;
+  padding-bottom: 2px;
+}
+
+.mta-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.subway-logo-container {
+  height: 30px;
+}
+
+.subway-logo {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+.subway-direction {
+  font-size: 20px;
+}
+
+.subway-time {
+  margin-left: auto;
+  font-size: 20px;
+}
+
+.splitter {
+  border-bottom: 1px solid grey;
+}

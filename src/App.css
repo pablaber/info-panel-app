@@ -1,0 +1,69 @@
+body {
+  background-image: url("./images/background.jpg");
+  width: 1080px;
+  height: 1920px;
+  background-repeat: no-repeat
+}
+
+.darken {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  left: 0;
+  width: 1080px;
+  height: 1920px;
+  background: linear-gradient(rgba(0,0,0,0.8)100px, rgba(0,0,0,0)500px, rgba(0,0,0,0.8));
+}
+
+.app-container {
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.filler {
+  flex-grow: 1;
+}
+
+.top {
+  color: white;
+  margin: 30px;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.modules {
+  display: flex;
+  flex-direction: row;
+}
+
+.modules-left,
+.modules-right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
+  justify-content: flex-end;
+}
+
+.modules-left {
+  margin-right: 10px;
+}
+
+.modules-right {
+  margin-left: 10px;
+}
+
+.modules-left:first-child,
+.modules-left:first-child {
+  margin-top: 0px;
+}

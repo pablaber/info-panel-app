@@ -1,0 +1,107 @@
+.darksky-container {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.darksky-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.filler {
+  flex-grow: 1;
+}
+
+.weather-icon {
+  width: 150px;
+  height: 150px;
+}
+
+.weather-icon-sm {
+  width: 60px;
+  height: 60px;
+}
+
+.arrow-icon {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+}
+
+.current-temps-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-temps {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.degree {
+  align-self: flex-start;
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.high-low {
+  display: flex;
+  flex-direction: column;
+  font-size: 22px;
+}
+
+.high {
+  color: red;
+}
+
+.low {
+  color: blue;
+}
+
+.current-temp {
+  font-size: 60px;
+  margin-right: 5px;
+}
+
+.current-icon {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uv-index {
+  font-weight: bold;
+}
+
+.top-border {
+  border-top: 2px solid black;
+}
+
+.hourly-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-icon-hourly {
+  margin: -20px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.hourly-temp {
+  font-weight: bold;
+}
+
+.hourly-schedule {
+  justify-content: space-around;
+  padding-top: 10px;
+}
