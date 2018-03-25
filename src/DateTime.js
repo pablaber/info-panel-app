@@ -41,10 +41,9 @@ class DateTime extends Component {
   };
 
   updateTime() {
-    this.setState((prevState, props) => {
-      prevState.now = moment();
+    this.setState({
+      now: moment(),
     });
-    this.forceUpdate();
   }
 }
 
