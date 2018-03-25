@@ -22,9 +22,7 @@ class MtaContainer extends Component {
     this.state = {
       state: STATES.loading,
       schedule: {},
-      now: moment()
     }
-    this.updateTime = this.updateTime.bind(this);
     this.refreshData = this.refreshData.bind(this);
     this.subwayLogoFor = this.subwayLogoFor.bind(this);
   }
@@ -52,13 +50,11 @@ class MtaContainer extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.updateTime, 1000);
     this.refreshInterval = setInterval(this.refreshData, REFRESH_RATE);
     this.refreshData();
   };
 
   componentWillUnmount() {
-    clearInterval(this.interval);
     clearInterval(this.refreshInterval);
   };
 
@@ -91,9 +87,9 @@ class MtaContainer extends Component {
           routeId: val.routeId
         }
       }).filter((val, index) => {
-        return val.eta.isAfter(this.state.now);
+        return val.eta.isAfter(this.props.time);
       }).map((val, index) => {
-        var totalSeconds = val.eta.diff(this.state.now, "seconds");
+        var totalSeconds = val.eta.diff(this.props.time, "seconds");
         var minutes = Math.floor(totalSeconds / 60);
         var seconds = totalSeconds % 60;
         seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -113,9 +109,9 @@ class MtaContainer extends Component {
         var eta = moment(val.arrivalTime * 1000);
         return eta;
       }).filter((val, index) => {
-        return val.isAfter(this.state.now);
+        return val.isAfter(this.props.time);
       }).map((val, index) => {
-          var totalSeconds = val.diff(this.state.now, "seconds");
+          var totalSeconds = val.diff(this.props.time, "seconds");
           var minutes = Math.floor(totalSeconds / 60);
           var seconds = totalSeconds % 60;
           seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -154,13 +150,6 @@ class MtaContainer extends Component {
       default:
         return unknownLogo;
     }
-  }
-
-  updateTime() {
-    this.setState((prevState, props) => {
-      prevState.now = moment();
-    });
-    this.forceUpdate();
   }
 };
 

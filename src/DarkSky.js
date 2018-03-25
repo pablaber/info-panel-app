@@ -47,8 +47,7 @@ class DarkSky extends Component {
     super(props);
     this.state = {
       state: STATES.loading,
-      data: {},
-      now: moment(),
+      data: {}
     }
     this.refreshData = this.refreshData.bind(this);
     this.currentRow = this.currentRow.bind(this);
@@ -230,11 +229,11 @@ class DarkSky extends Component {
     var sunsetTime = moment(this.state.data.daily.data[0].sunsetTime * 1000);
     var nextSunriseTime = moment(this.state.data.daily.data[1].sunriseTime * 1000);
     var icon, time;
-    if(this.state.now.isBefore(sunriseTime)) {
+    if(this.props.time.isBefore(sunriseTime)) {
       icon = sunrise;
       time = sunriseTime;
     }
-    else if(this.state.now.isBefore(sunsetTime)) {
+    else if(this.props.time.isBefore(sunsetTime)) {
       icon = sunset;
       time = sunsetTime;
     }
@@ -276,7 +275,5 @@ class DarkSky extends Component {
     }
   }
 }
-
-
 
 export default DarkSky;
