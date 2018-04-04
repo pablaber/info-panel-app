@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './DarkSky.css';
+import './styles/DarkSky.css';
 
 import moment from 'moment';
 
@@ -11,22 +11,22 @@ const STATES = {
   loaded: "loaded",
 }
 
-const clearDay = require('./images/weather-icons/clear-day.svg');
-const clearNight = require('./images/weather-icons/clear-night.svg');
-const cloudy = require('./images/weather-icons/cloudy.svg');
-const fog = require('./images/weather-icons/fog.svg');
-const partlyCloudyDay = require('./images/weather-icons/partly-cloudy-day.svg');
-const partlyCloudyNight = require('./images/weather-icons/partly-cloudy-night.svg');
-const rain = require('./images/weather-icons/rain.svg');
-const sleet = require('./images/weather-icons/sleet.svg');
-const snow = require('./images/weather-icons/snow.svg');
-const wind = require('./images/weather-icons/wind.svg');
+const clearDay = require('../images/weather-icons/clear-day.svg');
+const clearNight = require('../images/weather-icons/clear-night.svg');
+const cloudy = require('../images/weather-icons/cloudy.svg');
+const fog = require('../images/weather-icons/fog.svg');
+const partlyCloudyDay = require('../images/weather-icons/partly-cloudy-day.svg');
+const partlyCloudyNight = require('../images/weather-icons/partly-cloudy-night.svg');
+const rain = require('../images/weather-icons/rain.svg');
+const sleet = require('../images/weather-icons/sleet.svg');
+const snow = require('../images/weather-icons/snow.svg');
+const wind = require('../images/weather-icons/wind.svg');
 
-const arrow = require('./images/arrow.png');
-const shades = require('./images/weather-icons/shades.svg');
-const umbrella = require('./images/weather-icons/umbrella.svg');
-const sunrise = require('./images/weather-icons/sunrise.svg');
-const sunset = require('./images/weather-icons/sunset.svg');
+const arrow = require('../images/arrow.png');
+const shades = require('../images/weather-icons/shades.svg');
+const umbrella = require('../images/weather-icons/umbrella.svg');
+const sunrise = require('../images/weather-icons/sunrise.svg');
+const sunset = require('../images/weather-icons/sunset.svg');
 
 
 const iconMap = {

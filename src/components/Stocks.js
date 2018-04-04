@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './Stocks.css';
+import './styles/Stocks.css';
 
 const STATES = {
   loading: "loading",
@@ -10,7 +10,7 @@ const STATES = {
 
 const REFRESH_RATE = 60000 * 5;
 
-const logo = require('./images/stocks_logo.png');
+const logo = require('../images/stocks_logo.png');
 
 class Stocks extends Component {
 

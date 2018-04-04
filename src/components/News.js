@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './News.css'
+import './styles/News.css'
 
 const STATES = {
   loading: "loading",
@@ -7,7 +7,7 @@ const STATES = {
   loaded: "loaded",
 }
 
-const logo = require('./images/news_logo.png')
+const logo = require('../images/news_logo.png')
 
 const REFRESH_RATE = 60000 * 60;
 

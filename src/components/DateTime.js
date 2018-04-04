@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './DateTime.css';
+import './styles/DateTime.css';
 
 class DateTime extends Component {
   render() {

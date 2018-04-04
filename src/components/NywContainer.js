@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './NywContainer.css'
+import './styles/NywContainer.css'
 
-const logo = require('./images/nyw_logo.png');
+const logo = require('../images/nyw_logo.png');
 
 const STATES = {
   loading: "loading",
