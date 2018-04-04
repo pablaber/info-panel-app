@@ -34,7 +34,7 @@ const logos = {
     sea: require('./images/sports-logos/mlb/sea.png'),
     sfg: require('./images/sports-logos/mlb/sfg.png'),
     stl: require('./images/sports-logos/mlb/stl.png'),
-    tbd: require('./images/sports-logos/mlb/tbd.png'),
+    tb: require('./images/sports-logos/mlb/tbd.png'),
     tex: require('./images/sports-logos/mlb/tex.png'),
     tor: require('./images/sports-logos/mlb/tor.png'),
     wsh: require('./images/sports-logos/mlb/wsh.png'),
