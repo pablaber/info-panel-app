@@ -80,53 +80,62 @@ class MtaContainer extends Component {
 
   showTimes() {
     if(this.state.state === STATES.loaded) {
-      var northbound = this.state.schedule["N"].map((val, index) => {
-        var eta = moment(val.arrivalTime * 1000);
-        return {
-          eta: eta,
-          routeId: val.routeId
-        }
-      }).filter((val, index) => {
-        return val.eta.isAfter(this.props.time);
-      }).map((val, index) => {
-        var totalSeconds = val.eta.diff(this.props.time, "seconds");
-        var minutes = Math.floor(totalSeconds / 60);
-        var seconds = totalSeconds % 60;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        var timeStr = minutes + ":" + seconds;
-        return (
-          <div className="mta-row" key={"N" + index}>
-            <div className="subway-logo-container">
-              <img className="subway-logo" src={this.subwayLogoFor(val.routeId)} alt="six train logo" />
-            </div>
-            <label className="subway-direction">Uptown</label>
-            <label className="subway-time">{timeStr}</label>
-          </div>
-        )
-      });
-      northbound.splice(3);
-      var southbound = this.state.schedule["S"].map((val, index) => {
-        var eta = moment(val.arrivalTime * 1000);
-        return eta;
-      }).filter((val, index) => {
-        return val.isAfter(this.props.time);
-      }).map((val, index) => {
-          var totalSeconds = val.diff(this.props.time, "seconds");
+      var northbound, southbound;
+      if(!!this.state.schedule["N"]) {
+        northbound = this.state.schedule["N"].map((val, index) => {
+          var eta = moment(val.arrivalTime * 1000);
+          return {
+            eta: eta,
+            routeId: val.routeId
+          }
+        }).filter((val, index) => {
+          return val.eta.isAfter(this.props.time);
+        }).map((val, index) => {
+          var totalSeconds = val.eta.diff(this.props.time, "seconds");
           var minutes = Math.floor(totalSeconds / 60);
           var seconds = totalSeconds % 60;
           seconds = seconds < 10 ? "0" + seconds : seconds;
           var timeStr = minutes + ":" + seconds;
           return (
-          <div className="mta-row" key={"S" + index}>
-            <div className="subway-logo-container">
-              <img className="subway-logo" src={sixLogo} alt="six train logo" />
+            <div className="mta-row" key={"N" + index}>
+              <div className="subway-logo-container">
+                <img className="subway-logo" src={this.subwayLogoFor(val.routeId)} alt="six train logo" />
+              </div>
+              <label className="subway-direction">Uptown</label>
+              <label className="subway-time">{timeStr}</label>
             </div>
-            <label className="subway-direction">Downtown</label>
-            <label className="subway-time">{timeStr}</label>
-          </div>
-        )
-      });
-      southbound.splice(3);
+          )
+        });
+        northbound.splice(3);
+      } else {
+        northbound = [];
+      }
+
+      if(!!this.state.schedule["S"]) {
+        southbound = this.state.schedule["S"].map((val, index) => {
+          var eta = moment(val.arrivalTime * 1000);
+          return eta;
+        }).filter((val, index) => {
+          return val.isAfter(this.props.time);
+        }).map((val, index) => {
+            var totalSeconds = val.diff(this.props.time, "seconds");
+            var minutes = Math.floor(totalSeconds / 60);
+            var seconds = totalSeconds % 60;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            var timeStr = minutes + ":" + seconds;
+            return (
+            <div className="mta-row" key={"S" + index}>
+              <div className="subway-logo-container">
+                <img className="subway-logo" src={sixLogo} alt="six train logo" />
+              </div>
+              <label className="subway-direction">Downtown</label>
+              <label className="subway-time">{timeStr}</label>
+            </div>
+          )
+        });
+        southbound.splice(3);
+      }
+
 
       var splitter = [<div className="splitter" key="splitter"></div>]
 
