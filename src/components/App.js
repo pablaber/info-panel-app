@@ -11,6 +11,8 @@ import Sports from './Sports';
 import News from './News';
 import Stocks from './Stocks';
 
+import NewsLink from '../containers/NewsLink';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +48,7 @@ class App extends Component {
               <div className="modules-right">
                 <MtaContainer time={this.state.time}/>
                 <NywContainer />
-                <News />
+                <NewsLink />
               </div>
             </div>
             <div className="weather">

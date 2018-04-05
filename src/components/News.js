@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import './styles/News.css'
 
-const STATES = {
-  loading: "loading",
-  nodata: "nodata",
-  loaded: "loaded",
-}
-
 const logo = require('../images/news_logo.png')
 
 const REFRESH_RATE = 60000 * 60;
@@ -14,10 +8,6 @@ const REFRESH_RATE = 60000 * 60;
 class News extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      state: STATES.loading,
-      news: [],
-    }
     this.refreshData = this.refreshData.bind(this);
     this.loadNews = this.loadNews.bind(this);
   }
@@ -40,16 +30,13 @@ class News extends Component {
   }
 
   loadNews() {
-    if(this.state.state === STATES.loading) {
+    if(!this.props.articles || this.props.articles.length === 0) {
       return <span>Loading...</span>
-    }
-    else if(this.state.state === STATES.nodata) {
-      return <span>Error finding news data.</span>
     }
     else {
       return (
         <div className="news-container">
-          {this.state.news.map((value, index) => {
+          {this.props.articles.map((value, index) => {
             return (
               <div className="article" key={index}>
                 <div className="thumbnail-container">
@@ -87,17 +74,12 @@ class News extends Component {
       return response.json();
     }).then(data => {
       if(data.length === 0) {
-        this.setState((prevState, props) => {
-          prevState.state = STATES.nodata;
-          return prevState;
-        });
+        if(!this.props.articles) {
+          this.props.refresh([]);
+        }
       }
       else {
-        this.setState((prevState, props) => {
-          prevState.state = STATES.loaded;
-          prevState.news = data;
-          return prevState;
-        });
+        this.props.refresh(data);
       }
     });
   }
