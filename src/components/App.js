@@ -8,7 +8,6 @@ import MtaContainer from './MtaContainer';
 import DateTime from './DateTime';
 import DarkSky from './DarkSky';
 import Sports from './Sports';
-import News from './News';
 import Stocks from './Stocks';
 
 import NewsLink from '../containers/NewsLink';
