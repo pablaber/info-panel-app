@@ -3,7 +3,7 @@ import './App.css';
 
 import moment from 'moment';
 
-import NywContainer from './NywContainer';
+// import NywContainer from './NywContainer';
 import MtaContainer from './MtaContainer';
 import DateTime from './DateTime';
 import DarkSky from './DarkSky';
@@ -45,7 +45,6 @@ class App extends Component {
               </div>
               <div className="modules-right">
                 <MtaContainer time={this.state.time}/>
-                <NywContainer />
                 <News />
               </div>
             </div>
