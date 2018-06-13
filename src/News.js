@@ -83,7 +83,7 @@ class News extends Component {
   }
 
   refreshData() {
-    fetch("http://165.227.74.80/:8080/news").then((response) => {
+    fetch("http://165.227.74.80:8080/news").then((response) => {
       return response.json();
     }).then(data => {
       if(data.length === 0) {
