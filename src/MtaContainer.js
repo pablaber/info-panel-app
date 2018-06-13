@@ -59,7 +59,7 @@ class MtaContainer extends Component {
   };
 
   refreshData() {
-    fetch('http://localhost:8080/mta-subway-times').then((response) => {
+    fetch('http://165.227.74.80/:8080/mta-subway-times').then((response) => {
       return response.json();
     }).then((data) => {
       if(!!data) {

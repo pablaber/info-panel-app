@@ -192,7 +192,7 @@ class Sports extends Component {
   }
 
   refreshData() {
-    fetch('http://localhost:8080/scores').then((response) => {
+    fetch('http://165.227.74.80/:8080/scores').then((response) => {
       return response.json();
     }).then((data) => {
       if(!!data) {
