@@ -50,7 +50,7 @@ class NywContainer extends Component {
   }
 
   refreshData() {
-    fetch("http://165.227.74.80:8080/nyw-bus-times").then((response) => {
+    fetch(process.env.REACT_APP_API_URL + "/nyw-bus-times").then((response) => {
       return response.json();
     }).then(data => {
       if(data.failed && data.error === "OFF_PEAK") {

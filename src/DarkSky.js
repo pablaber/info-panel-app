@@ -164,7 +164,7 @@ class DarkSky extends Component {
   }
 
   refreshData() {
-    fetch('http://165.227.74.80:8080/darksky-weather').then((response) => {
+    fetch(process.env.REACT_APP_API_URL + '/darksky-weather').then((response) => {
       return response.json();
     }).then((data) => {
       if(!!data) {
