@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 
 import './Citibike.css';
 
@@ -90,7 +89,7 @@ class Citibike extends Component {
 
   classForStation(value) {
     let totalBikes = value.bikesAvailable + value.docksAvailable;
-    if(value.isActive != 1) {
+    if(value.isActive !== 1) {
       return "inactive";
     }
     else if(value.bikesAvailable === 0) {

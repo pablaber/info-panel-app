@@ -153,11 +153,13 @@ class Sports extends Component {
     super(props);
     this.state = {
       state: STATES.loading,
-      scores: {}
+      scores: {},
+      max: 0
     };
     this.refreshData = this.refreshData.bind(this);
     this.loadYesterdaysScores = this.loadYesterdaysScores.bind(this);
     this.loadUpcomingSchedule = this.loadUpcomingSchedule.bind(this);
+    this.loadTodaysGames = this.loadTodaysGames.bind(this);
   }
 
   render() {
@@ -175,6 +177,8 @@ class Sports extends Component {
         <div className="scores-container">
           <span className="scores-title">Yesterday's Scores</span>
           {this.loadYesterdaysScores()}
+          <span className="scores-title">Today's Games</span>
+          {this.loadTodaysGames()}
           <span className="scores-title">Upcoming Games</span>
           {this.loadUpcomingSchedule()}
         </div>
@@ -199,6 +203,7 @@ class Sports extends Component {
         this.setState((prevState, props) => {
           prevState.state = STATES.loaded;
           prevState.scores = data;
+          prevState.max = data.today.length + data.future.length
           return prevState;
         })
       }
@@ -264,9 +269,58 @@ class Sports extends Component {
     }
   }
 
+  loadTodaysGames() {
+    if (this.state.state === STATES.loaded) {
+      var todaysGames = this.state.scores.today;
+      if(todaysGames.length === 0) {
+        return <span className="no-scores">No games.</span>
+      }
+      return (
+        <div className="todays-games">
+          {todaysGames.map((value, index) => {
+            var gameTime = moment(value.date, "YYYY-MM-DD h:mmA");
+            return (
+              <div className="score-box" key={index}>
+                <div className="away-team">
+                  <div className="score-logo-container">
+                    <img className="score-logo"
+                      src={logos[value.league][value.awayTeam.Abbreviation.toLowerCase()]}
+                      alt="team logo" />
+                  </div>
+                  <span className="team-name">
+                    {value.awayTeam.City}
+                  </span>
+                  <div className="filler"></div>
+                  <span className="game-day">
+                    Today
+                  </span>
+                </div>
+                <div className="home-team">
+                  <div className="score-logo-container">
+                    <img className="score-logo"
+                      src={logos[value.league][value.homeTeam.Abbreviation.toLowerCase()]}
+                      alt="team logo" />
+                  </div>
+                  <span className="team-name">
+                    {value.homeTeam.City}
+                  </span>
+                  <div className="filler"></div>
+                  <span className="game-time">
+                    {gameTime.format("h:mm A")}
+                  </span>
+                </div>
+
+              </div>
+            )
+          })}
+        </div>
+      )
+    }
+  }
+
   loadUpcomingSchedule() {
     if(this.state.state === STATES.loaded) {
-      var upcomingSchedule = this.state.scores.future;
+      var upcomingSchedule = this.state.scores.future.slice(0, this.state.max - this.state.scores.today.length);
       return (
         <div className="future-games">
           {upcomingSchedule.map((value, index) => {
