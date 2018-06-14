@@ -10,6 +10,7 @@ import DarkSky from './DarkSky';
 import Sports from './Sports';
 import News from './News';
 import Stocks from './Stocks';
+import Citibike from './Citibike';
 
 class App extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class App extends Component {
                 <Sports />
               </div>
               <div className="modules-right">
+                <Citibike />
                 <MtaContainer time={this.state.time}/>
                 <News />
               </div>

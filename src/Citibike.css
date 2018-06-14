@@ -1,0 +1,56 @@
+.citibike-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.station-logo {
+  object-fit: none;
+  width: 38px;
+  height: 49px;
+}
+
+.inactive {
+  object-position: -114px -92px;
+}
+
+.empty {
+  object-position: 0 -141px;
+}
+
+.low {
+  object-position: -38px -141px;
+}
+
+.half {
+  object-position: -38px -92px;
+}
+
+.most {
+  object-position: -76px -92px;
+}
+
+.all {
+  object-position: 0 -92px;
+}
+
+.station-name {
+  margin-left: 10px;
+  font-size: 24px;
+}
+
+.station-bike-info-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: flex-end;
+}
+
+.bikes-available {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.docks-available {
+  font-size: 16px;
+}
