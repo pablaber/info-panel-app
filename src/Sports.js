@@ -37,7 +37,7 @@ const logos = {
     tb: require('./images/sports-logos/mlb/tbd.png'),
     tex: require('./images/sports-logos/mlb/tex.png'),
     tor: require('./images/sports-logos/mlb/tor.png'),
-    wsh: require('./images/sports-logos/mlb/wsh.png'),
+    was: require('./images/sports-logos/mlb/wsh.png'),
   },
   nba: {
     atl: require('./images/sports-logos/nba/atl.png'),
