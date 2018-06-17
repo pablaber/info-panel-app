@@ -54,3 +54,8 @@
 .docks-available {
   font-size: 16px;
 }
+
+.station-inactive {
+  font-size: 20px;
+  font-style: italic;
+}

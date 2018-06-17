@@ -78,8 +78,13 @@ class Citibike extends Component {
             </div>
             <label className="station-name">{value.name}</label>
             <div className="station-bike-info-container">
-              <label className="bikes-available">{value.bikesAvailable + " bikes"}</label>
-              <label className="docks-available">{value.docksAvailable + " docks"}</label>
+              {this.classForStation(value) === "inactive" ? (
+                <label className="station-inactive">Inactive</label>
+              ) : ([
+                <label className="bikes-available">{value.bikesAvailable + (parseInt(value.bikesAvailable, 10) > 1 ? " bikes" : " bike")}</label>,
+                <label className="docks-available">{value.docksAvailable + (parseInt(value.docksAvailable, 10) > 1 ? " docks" : " dock")}</label>
+              ])}
+              
             </div>
           </div>
         )
