@@ -4,7 +4,7 @@
 
 .scores-title {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .yesterdays-scores {
@@ -48,7 +48,7 @@
 }
 
 .team-name {
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 10px;
 }
 
@@ -59,13 +59,19 @@
 .score {
   width: 50px;
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .game-day {
   align-self: flex-end;
+  font-size: 22px;
 }
 
 .game-time {
   align-self: flex-start;
+  font-size: 22px;
+}
+
+.winner {
+  font-weight: bold;
 }

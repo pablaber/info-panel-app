@@ -228,7 +228,7 @@ class Sports extends Component {
             {yesterdaysScores.map((value, index) => {
               return (
                 <div className="score-box" key={index}>
-                  <div className="away-team">
+                  <div className={"away-team" + (parseInt(value.awayScore, 10) > parseInt(value.homeScore, 10) ? " winner" : "")}>
                     <div className="score-logo-container">
                       <img className="score-logo"
                            src={logos[value.league][value.awayTeam.Abbreviation.toLowerCase()]}
@@ -242,7 +242,7 @@ class Sports extends Component {
                       {value.awayScore}
                     </span>
                   </div>
-                  <div className="home-team">
+                  <div className={"home-team" + (parseInt(value.homeScore, 10) > parseInt(value.awayScore, 10) ? " winner" : "")}>
                     <div className="score-logo-container">
                       <img className="score-logo"
                            src={logos[value.league][value.homeTeam.Abbreviation.toLowerCase()]}

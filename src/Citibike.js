@@ -105,7 +105,7 @@ class Citibike extends Component {
       return "most";
     }
     else if(value.bikesAvailable === totalBikes) {
-      return "full";
+      return "all";
     }
     else {
       return "";
